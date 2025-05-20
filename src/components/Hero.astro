@@ -1,0 +1,65 @@
+---
+// You'll need to replace this with your actual anniversary date
+const anniversaryDate = new Date("2025-01-01"); // Example date
+const currentDate = new Date();
+
+// Calculate days together
+const daysTogether = Math.floor((currentDate.getTime() - anniversaryDate.getTime()) / (1000 * 60 * 60 * 24));
+---
+
+<section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-20 left-10 w-32 h-32 rounded-full bg-wine-500/10 blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-wine-600/20 blur-3xl"></div>
+  </div>
+  
+  <!-- Floating daisy flowers -->
+  <div class="absolute top-32 left-[20%] opacity-40 animate-float delay-500 z-0">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C10.5 2 9 2.5 7.5 3.5C6 4.5 5 6 4.5 8C4 10 4.5 12 5.5 13.5C6.5 15 8 16 10 16.5C12 17 14 16.5 15.5 15.5C17 14.5 18 13 18.5 11C19 9 18.5 7 17.5 5.5C16.5 4 15 3 13 2.5C12.5 2.2 12.2 2 12 2Z" fill="white" opacity="0.8"/>
+      <circle cx="12" cy="9" r="3" fill="#FFD700"/>
+    </svg>
+  </div>
+  
+  <div class="absolute bottom-24 right-[15%] opacity-30 animate-float delay-1000 z-0">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C10.5 2 9 2.5 7.5 3.5C6 4.5 5 6 4.5 8C4 10 4.5 12 5.5 13.5C6.5 15 8 16 10 16.5C12 17 14 16.5 15.5 15.5C17 14.5 18 13 18.5 11C19 9 18.5 7 17.5 5.5C16.5 4 15 3 13 2.5C12.5 2.2 12.2 2 12 2Z" fill="white" opacity="0.8"/>
+      <circle cx="12" cy="9" r="3" fill="#FFD700"/>
+    </svg>
+  </div>
+  
+  <!-- Hero content -->
+  <div class="container mx-auto relative z-10" data-aos="fade-up" data-aos-delay="200">
+    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl mb-4 leading-tight">
+      Happy <span class="text-gradient font-semibold">Anniversary</span>
+    </h1>
+    
+    <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-200">
+      Celebrating our special journey through life together ♥
+    </p>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+      <div class="bg-dark-800/70 backdrop-blur-sm px-6 py-4 rounded-lg border border-wine-800/40">
+        <span class="block text-3xl md:text-4xl font-serif text-wine-300 mb-1">{daysTogether}</span>
+        <span class="text-sm uppercase tracking-wide text-gray-300">Days Together</span>
+      </div>
+      
+      <div class="bg-dark-800/70 backdrop-blur-sm px-6 py-4 rounded-lg border border-wine-800/40">
+        <span class="block text-3xl md:text-4xl font-serif text-wine-300 mb-1">∞</span>
+        <span class="text-sm uppercase tracking-wide text-gray-300">Memories Created</span>
+      </div>
+    </div>
+    
+    <a href="#story" class="inline-block bg-wine-600 hover:bg-wine-700 text-white font-medium py-3 px-8 rounded-lg transition-colors shadow-lg hover:shadow-wine-700/20">
+      Our Journey
+    </a>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-wine-300">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 bg-dark-900 relative overflow-hidden">
+  <!-- Decorative anime-inspired circles -->
+  <div class="absolute top-0 left-0 w-full h-[1px] bg-wine-800/30"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="flex flex-col items-center">
+      <div class="mb-8">
+        <!-- Decorative element -->
+        <div class="flex items-center">
+          <div class="w-16 h-[1px] bg-wine-700/50"></div>
+          <div class="mx-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C10.5 2 9 2.5 7.5 3.5C6 4.5 5 6 4.5 8C4 10 4.5 12 5.5 13.5C6.5 15 8 16 10 16.5C12 17 14 16.5 15.5 15.5C17 14.5 18 13 18.5 11C19 9 18.5 7 17.5 5.5C16.5 4 15 3 13 2.5C12.5 2.2 12.2 2 12 2Z" fill="#722F37" opacity="0.8"/>
+              <circle cx="12" cy="9" r="3" fill="#FFD700"/>
+            </svg>
+          </div>
+          <div class="w-16 h-[1px] bg-wine-700/50"></div>
+        </div>
+      </div>
+      
+      <p class="text-center text-gray-400 mb-4">
+        Created with love for our special anniversary
+      </p>
+      
+      <p class="text-center text-gray-500 text-sm">
+        &copy; {currentYear} | To many more years together
+      </p>
+    </div>
+  </div>
+</footer>

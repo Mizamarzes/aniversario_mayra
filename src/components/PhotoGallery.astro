@@ -1,0 +1,190 @@
+---
+// Replace these with your actual photos
+// Note: In a real project, you might want to dynamically load these
+const photos = [
+  {
+    url: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg",
+    thumbnail: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920,
+    height: 1280,
+    alt: "Couple holding hands"
+  },
+  {
+    url: "https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg",
+    thumbnail: "https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920,
+    height: 1080,
+    alt: "Couple at sunset"
+  },
+  {
+    url: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg",
+    thumbnail: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920,
+    height: 1280,
+    alt: "Couple walking on beach"
+  },
+  {
+    url: "https://images.pexels.com/photos/2990011/pexels-photo-2990011.jpeg",
+    thumbnail: "https://images.pexels.com/photos/2990011/pexels-photo-2990011.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920,
+    height: 1280,
+    alt: "Couple walking in forest"
+  },
+  {
+    url: "https://images.pexels.com/photos/1029225/pexels-photo-1029225.jpeg",
+    thumbnail: "https://images.pexels.com/photos/1029225/pexels-photo-1029225.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920, 
+    height: 1280,
+    alt: "Couple dancing"
+  },
+  {
+    url: "https://images.pexels.com/photos/935789/pexels-photo-935789.jpeg",
+    thumbnail: "https://images.pexels.com/photos/935789/pexels-photo-935789.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920,
+    height: 1280,
+    alt: "Couple having dinner"
+  },
+  {
+    url: "https://images.pexels.com/photos/1404468/pexels-photo-1404468.jpeg",
+    thumbnail: "https://images.pexels.com/photos/1404468/pexels-photo-1404468.jpeg?auto=compress&cs=tinysrgb&w=300", 
+    width: 1920,
+    height: 1280,
+    alt: "Couple traveling"
+  },
+  {
+    url: "https://images.pexels.com/photos/1654498/pexels-photo-1654498.jpeg",
+    thumbnail: "https://images.pexels.com/photos/1654498/pexels-photo-1654498.jpeg?auto=compress&cs=tinysrgb&w=300",
+    width: 1920,
+    height: 1280,
+    alt: "Couple silhouette"
+  }
+];
+
+// Group photos for the grid layout
+const photoRows = [
+  photos.slice(0, 4),
+  photos.slice(4)
+];
+---
+
+<section id="photos" class="py-20 relative bg-dark-800">
+  <!-- Animated background elements -->
+  <div class="absolute bottom-0 right-0 w-full h-full overflow-hidden opacity-10 z-0">
+    <div class="absolute top-[10%] right-[5%] w-64 h-64 rounded-full bg-wine-500/30 blur-3xl"></div>
+    <div class="absolute bottom-[20%] left-[10%] w-80 h-80 rounded-full bg-wine-700/20 blur-3xl"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-serif mb-4 chemistry-border inline-block">Our Memories</h2>
+      <p class="max-w-2xl mx-auto text-gray-300">Each photo captures a moment of our beautiful journey together.</p>
+    </div>
+    
+    <!-- Gallery Grid -->
+    <div class="gallery-container space-y-4">
+      {photoRows.map((row, rowIndex) => (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {row.map((photo, photoIndex) => {
+            const fullIndex = rowIndex * 4 + photoIndex;
+            return (
+              <div 
+                class="gallery-item overflow-hidden rounded-lg group cursor-pointer relative"
+                data-aos="fade-up" 
+                data-aos-delay={100 * fullIndex}
+                data-pswp-width={photo.width}
+                data-pswp-height={photo.height}
+                data-cropped="true"
+              >
+                <img 
+                  src={photo.thumbnail} 
+                  alt={photo.alt}
+                  class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading={fullIndex < 4 ? "eager" : "lazy"}
+                />
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                  <div class="p-4">
+                    <span class="text-white text-sm">{photo.alt}</span>
+                  </div>
+                </div>
+                
+                <a 
+                  href={photo.url}
+                  target="_blank"
+                  class="hidden"
+                  data-pswp-width={photo.width}
+                  data-pswp-height={photo.height}
+                >
+                  {photo.alt}
+                </a>
+              </div>
+            )
+          })}
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- PhotoSwipe Root Element -->
+  <div class="pswp-gallery pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import PhotoSwipe from 'photoswipe';
+  
+  // Initialize PhotoSwipe
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const link = item.querySelector('a');
+        if (!link) return;
+        
+        const options = {
+          gallery: '.gallery-container',
+          children: 'a',
+          pswpModule: PhotoSwipe
+        };
+        
+        const lightbox = new PhotoSwipe(options);
+        lightbox.init();
+      });
+    });
+  });
+</script>
