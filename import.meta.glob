@@ -1,0 +1,24 @@
+---
+// Importar todas las imágenes en la carpeta
+const imageModules = import.meta.glob('/src/assets/*.{jpg,jpeg,png,webp}', { eager: true });
+
+const photos = Object.entries(imageModules).map(([path, mod]) => {
+  const url = (mod as { default: string }).default;
+  const name = path.split('/').pop() ?? 'Photo';
+  const alt = name.replace(/\.\w+$/, '').replace(/[-_]/g, ' '); // nombre de archivo como texto alternativo
+
+  return {
+    url,
+    thumbnail: url, // Podrías hacer versiones pequeñas si lo deseas
+    width: 1920,     // Podrías usar algo como `image-size` para dimensiones reales si lo necesitas
+    height: 1280,
+    alt
+  };
+});
+
+// Agrupar por filas
+const photoRows = [
+  photos.slice(0, 4),
+  photos.slice(4)
+];
+---

@@ -1,63 +1,23 @@
 ---
 // Replace these with your actual photos
 // Note: In a real project, you might want to dynamically load these
+
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/*.{jpg,jpeg,webp}', { eager: true });
+
+const photosParser = Object.entries(images).map(([path, module]) => {
+  // Extrae solo el nombre del archivo si lo necesitas
+  const filename = path.split('/').pop() ?? '';
+  return {
+    url: module.default.src,
+    thumbnail: module.default.src, // Puedes aplicar un tamaño reducido con una lib o usar el mismo
+    width: module.default.width,
+    height: module.default.height,
+    alt: filename.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '), // genera alt a partir del nombre del archivo
+  };
+});
+
 const photos = [
-  {
-    url: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg",
-    thumbnail: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920,
-    height: 1280,
-    alt: "Couple holding hands"
-  },
-  {
-    url: "https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg",
-    thumbnail: "https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920,
-    height: 1080,
-    alt: "Couple at sunset"
-  },
-  {
-    url: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg",
-    thumbnail: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920,
-    height: 1280,
-    alt: "Couple walking on beach"
-  },
-  {
-    url: "https://images.pexels.com/photos/2990011/pexels-photo-2990011.jpeg",
-    thumbnail: "https://images.pexels.com/photos/2990011/pexels-photo-2990011.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920,
-    height: 1280,
-    alt: "Couple walking in forest"
-  },
-  {
-    url: "https://images.pexels.com/photos/1029225/pexels-photo-1029225.jpeg",
-    thumbnail: "https://images.pexels.com/photos/1029225/pexels-photo-1029225.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920, 
-    height: 1280,
-    alt: "Couple dancing"
-  },
-  {
-    url: "https://images.pexels.com/photos/935789/pexels-photo-935789.jpeg",
-    thumbnail: "https://images.pexels.com/photos/935789/pexels-photo-935789.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920,
-    height: 1280,
-    alt: "Couple having dinner"
-  },
-  {
-    url: "https://images.pexels.com/photos/1404468/pexels-photo-1404468.jpeg",
-    thumbnail: "https://images.pexels.com/photos/1404468/pexels-photo-1404468.jpeg?auto=compress&cs=tinysrgb&w=300", 
-    width: 1920,
-    height: 1280,
-    alt: "Couple traveling"
-  },
-  {
-    url: "https://images.pexels.com/photos/1654498/pexels-photo-1654498.jpeg",
-    thumbnail: "https://images.pexels.com/photos/1654498/pexels-photo-1654498.jpeg?auto=compress&cs=tinysrgb&w=300",
-    width: 1920,
-    height: 1280,
-    alt: "Couple silhouette"
-  }
+  ...photosParser 
 ];
 
 // Group photos for the grid layout
