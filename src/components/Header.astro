@@ -1,5 +1,8 @@
 ---
 // Navigation links
+
+import video1 from "../music/v1.mp3";
+
 const navLinks = [
   { text: "Inicio", href: "#hero" },
   { text: "Nuestra Historia", href: "#story" },
@@ -9,87 +12,201 @@ const navLinks = [
 ];
 ---
 
-<header id="main-header" class="fixed w-full transition-all duration-300 z-50 px-4 md:px-0">
+<header
+  id="main-header"
+  class="fixed w-full transition-all duration-300 z-50 px-4 md:px-0"
+>
   <div class="container mx-auto flex justify-between items-center py-4">
-    <a href="#" class="text-xl md:text-2xl font-serif italic text-white hover:text-wine-300 transition-colors">
+    <a
+      href="#"
+      class="text-xl md:text-2xl font-serif italic text-white hover:text-wine-300 transition-colors"
+    >
       <span class="font-bold">Feliz</span> Aniversario Mi Amor
     </a>
-    
+
     <nav class="hidden md:block">
       <ul class="flex space-x-8">
-        {navLinks.map(link => (
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-white hover:text-wine-300 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-wine-400 hover:after:w-full after:transition-all"
+              >
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <button
+        id="music-toggle"
+        class="text-white hover:text-wine-300 transition-colors"
+        aria-label="Toggle Music"
+      >
+        <span class="block w-8 h-8 relative">
+          <!-- Music playing icon -->
+          <span
+            id="music-playing"
+            class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity"
+          >
+            <span class="flex gap-1">
+              <span
+                class="w-1 h-4 bg-current rounded-full animate-[musicBounce_0.8s_ease-in-out_infinite]"
+                style="animation-delay: 0s"></span>
+              <span
+                class="w-1 h-4 bg-current rounded-full animate-[musicBounce_0.8s_ease-in-out_infinite]"
+                style="animation-delay: 0.2s"></span>
+              <span
+                class="w-1 h-4 bg-current rounded-full animate-[musicBounce_0.8s_ease-in-out_infinite]"
+                style="animation-delay: 0.4s"></span>
+            </span>
+          </span>
+          <!-- Music paused icon -->
+          <span
+            id="music-paused"
+            class="absolute inset-0 flex items-center justify-center transition-opacity"
+          >
+            <span class="flex gap-1">
+              <span class="w-1 h-4 bg-current rounded-full"></span>
+              <span class="w-1 h-4 bg-current rounded-full"></span>
+              <span class="w-1 h-4 bg-current rounded-full"></span>
+            </span>
+          </span>
+        </span>
+      </button>
+
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden text-white hover:text-wine-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 bg-dark-900/95 z-50 transform translate-x-full transition-transform duration-300 flex justify-center items-center md:hidden"
+  >
+    <button
+      id="mobile-menu-close"
+      class="absolute top-4 right-4 text-white hover:text-wine-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <ul class="flex flex-col space-y-6 text-center">
+      {
+        navLinks.map((link) => (
           <li>
-            <a 
-              href={link.href} 
-              class="text-white hover:text-wine-300 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-wine-400 hover:after:w-full after:transition-all"
+            <a
+              href={link.href}
+              class="text-xl text-white hover:text-wine-300 transition-colors mobile-link"
             >
               {link.text}
             </a>
           </li>
-        ))}
-      </ul>
-    </nav>
-    
-    <button id="mobile-menu-toggle" class="md:hidden text-white hover:text-wine-300">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </svg>
-    </button>
-  </div>
-  
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 bg-dark-900/95 z-50 transform translate-x-full transition-transform duration-300 flex justify-center items-center md:hidden">
-    <button id="mobile-menu-close" class="absolute top-4 right-4 text-white hover:text-wine-300">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    
-    <ul class="flex flex-col space-y-6 text-center">
-      {navLinks.map(link => (
-        <li>
-          <a 
-            href={link.href} 
-            class="text-xl text-white hover:text-wine-300 transition-colors mobile-link"
-          >
-            {link.text}
-          </a>
-        </li>
-      ))}
+        ))
+      }
     </ul>
   </div>
+
+  <!-- Background Music -->
+  <audio id="background-music" loop>
+    <source src={video1} type="audio/mpeg" />
+  </audio>
 </header>
 
 <script>
   // Handle header background on scroll
-  const header = document.getElementById('main-header');
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenuClose = document.getElementById('mobile-menu-close');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-  
-  // Change header background on scroll
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header?.classList.add('bg-dark-900/90', 'backdrop-blur-md', 'shadow-md');
+  const header = document.getElementById("main-header");
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenuClose = document.getElementById("mobile-menu-close");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  // Music control elements
+  const musicToggle = document.getElementById("music-toggle");
+  const musicPlaying = document.getElementById("music-playing");
+  const musicPaused = document.getElementById("music-paused");
+  const backgroundMusic = document.getElementById(
+    "background-music"
+  ) as HTMLAudioElement;
+
+  let isMusicPlaying = false;
+
+  musicToggle?.addEventListener("click", () => {
+    if (isMusicPlaying) {
+      backgroundMusic?.pause();
+      musicPlaying?.classList.remove("opacity-100");
+      musicPlaying?.classList.add("opacity-0");
+      musicPaused?.classList.remove("opacity-0");
+      musicPaused?.classList.add("opacity-100");
     } else {
-      header?.classList.remove('bg-dark-900/90', 'backdrop-blur-md', 'shadow-md');
+      backgroundMusic?.play();
+      musicPlaying?.classList.remove("opacity-0");
+      musicPlaying?.classList.add("opacity-100");
+      musicPaused?.classList.remove("opacity-100");
+      musicPaused?.classList.add("opacity-0");
+    }
+    isMusicPlaying = !isMusicPlaying;
+  });
+
+  // Change header background on scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("bg-dark-900/90", "backdrop-blur-md", "shadow-md");
+    } else {
+      header?.classList.remove(
+        "bg-dark-900/90",
+        "backdrop-blur-md",
+        "shadow-md"
+      );
     }
   });
-  
+
   // Toggle mobile menu
-  mobileMenuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.remove('translate-x-full');
+  mobileMenuToggle?.addEventListener("click", () => {
+    mobileMenu?.classList.remove("translate-x-full");
   });
-  
-  mobileMenuClose?.addEventListener('click', () => {
-    mobileMenu?.classList.add('translate-x-full');
+
+  mobileMenuClose?.addEventListener("click", () => {
+    mobileMenu?.classList.add("translate-x-full");
   });
-  
+
   // Close menu when clicking on a link
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('translate-x-full');
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("translate-x-full");
     });
   });
 </script>
