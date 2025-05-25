@@ -1,80 +1,117 @@
 ---
 // Replace these with your actual videos
 // For example purposes, using placeholder YouTube videos
+
 const videos = [
   {
-    id: "dQw4w9WgXcQ", // Rick Astley - Never Gonna Give You Up
-    title: "Our First Dance",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    id: "2cWH5863PD0",
+    title: "Un video para recordar toda la vida",
+    thumbnail:
+      "https://i.pinimg.com/736x/8a/a4/91/8aa49146e9f29cbfc87d7bded58d65ac.jpg"
   },
   {
-    id: "ZZ5LpwO-An4", // HEYYEYAAEYAAAEYAEYAA
-    title: "Road Trip 2023",
-    thumbnail: "https://img.youtube.com/vi/ZZ5LpwO-An4/maxresdefault.jpg"
+    id: "_2dxD1jDOtI", // HEYYEYAAEYAAAEYAEYAA
+    title: "Farid Carreando",
+    thumbnail:
+      "https://i.pinimg.com/736x/6f/c5/9d/6fc59d17783a53e7c61768274cd8e6bc.jpg"
   },
-  {
-    id: "9bZkp7q19f0", // PSY - Gangnam Style
-    title: "Birthday Celebration",
-    thumbnail: "https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg"
-  }
 ];
 ---
 
 <section id="videos" class="py-20 relative">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-serif mb-4 chemistry-border inline-block">Our Favorite Moments</h2>
-      <p class="max-w-2xl mx-auto text-gray-300">Watch some of our special moments together.</p>
+      <h2
+        class="text-3xl md:text-4xl font-serif mb-4 chemistry-border inline-block"
+      >
+        Nuestros Videos Favoritos
+      </h2>
+      <p class="max-w-2xl mx-auto text-gray-300">pseint?.</p>
     </div>
-    
+
     <!-- Swiper container -->
-    <div class="swiper videoSwiper max-w-5xl mx-auto overflow-hidden" data-aos="fade-up">
+    <div
+      class="swiper videoSwiper max-w-5xl mx-auto overflow-hidden"
+      data-aos="fade-up"
+    >
       <div class="swiper-wrapper pb-10">
-        {videos.map((video, index) => (
-          <div class="swiper-slide p-2">
-            <div class="bg-dark-800 rounded-lg overflow-hidden shadow-lg hover:shadow-wine-900/30 transition-shadow border border-wine-900/20 h-full flex flex-col">
-              <div class="video-thumb relative cursor-pointer overflow-hidden group">
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.title} 
-                  class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  data-video-id={video.id}
-                />
-                
-                <div class="absolute inset-0 flex items-center justify-center bg-dark-900/40 group-hover:bg-dark-900/20 transition-all">
-                  <div class="w-16 h-16 rounded-full bg-wine-600 flex items-center justify-center transform transition-all group-hover:scale-110">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-white ml-1">
-                      <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
-                    </svg>
+        {
+          videos.map((video, index) => (
+            <div class="swiper-slide p-2">
+              <div class="bg-dark-800 rounded-lg overflow-hidden shadow-lg hover:shadow-wine-900/30 transition-shadow border border-wine-900/20 h-full flex flex-col">
+                <div class="video-thumb relative cursor-pointer overflow-hidden group">
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    data-video-id={video.id}
+                  />
+
+                  <div class="absolute inset-0 flex items-center justify-center bg-dark-900/40 group-hover:bg-dark-900/20 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-wine-600 flex items-center justify-center transform transition-all group-hover:scale-110">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="w-8 h-8 text-white ml-1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              <div class="p-4">
-                <h3 class="font-serif text-xl mb-2">{video.title}</h3>
-                <p class="text-gray-400 text-sm">Click to watch our special moment</p>
+
+                <div class="p-4">
+                  <h3 class="font-serif text-xl mb-2">{video.title}</h3>
+                  <p class="text-gray-400 text-sm">Dale click</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
-      
+
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next text-wine-500"></div>
       <div class="swiper-button-prev text-wine-500"></div>
     </div>
-    
+
     <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div
+      id="video-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
       <div class="max-w-4xl w-full mx-4">
         <div class="relative pb-[56.25%] h-0 bg-dark-900">
-          <iframe id="youtube-iframe" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe
+            id="youtube-iframe"
+            class="absolute top-0 left-0 w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
         </div>
-        
-        <button id="close-modal" class="absolute top-4 right-4 text-white hover:text-wine-300">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+
+        <button
+          id="close-modal"
+          class="absolute top-4 right-4 text-white hover:text-wine-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
@@ -83,23 +120,23 @@ const videos = [
 </section>
 
 <script>
-  import Swiper from 'swiper';
-  import { Navigation, Pagination } from 'swiper/modules';
-  
+  import Swiper from "swiper";
+  import { Navigation, Pagination } from "swiper/modules";
+
   // Initialize Swiper
-  document.addEventListener('DOMContentLoaded', () => {
-    const swiper = new Swiper('.videoSwiper', {
+  document.addEventListener("DOMContentLoaded", () => {
+    const swiper = new Swiper(".videoSwiper", {
       modules: [Navigation, Pagination],
       slidesPerView: 1,
       spaceBetween: 20,
       loop: true,
       pagination: {
-        el: '.swiper-pagination',
+        el: ".swiper-pagination",
         clickable: true,
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
       breakpoints: {
         640: {
@@ -110,49 +147,49 @@ const videos = [
         },
       },
     });
-    
+
     // Video Modal Functionality
-    const videoModal = document.getElementById('video-modal');
-    const videoThumbs = document.querySelectorAll('.video-thumb');
-    const youtubeIframe = document.getElementById('youtube-iframe');
-    const closeModal = document.getElementById('close-modal');
-    
-    videoThumbs.forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const videoId = thumb.querySelector('img').dataset.videoId;
-        
+    const videoModal = document.getElementById("video-modal");
+    const videoThumbs = document.querySelectorAll(".video-thumb");
+    const youtubeIframe = document.getElementById("youtube-iframe");
+    const closeModal = document.getElementById("close-modal");
+
+    videoThumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const videoId = thumb.querySelector("img").dataset.videoId;
+
         if (youtubeIframe && videoId) {
           youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-          
+
           if (videoModal) {
-            videoModal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
+            videoModal.classList.remove("opacity-0", "pointer-events-none");
+            document.body.style.overflow = "hidden";
           }
         }
       });
     });
-    
-    closeModal?.addEventListener('click', () => {
+
+    closeModal?.addEventListener("click", () => {
       if (videoModal) {
-        videoModal.classList.add('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = '';
-        
+        videoModal.classList.add("opacity-0", "pointer-events-none");
+        document.body.style.overflow = "";
+
         if (youtubeIframe) {
-          youtubeIframe.src = '';
+          youtubeIframe.src = "";
         }
       }
     });
-    
+
     // Close modal when clicking outside content
-    videoModal?.addEventListener('click', (e) => {
+    videoModal?.addEventListener("click", (e) => {
       if (e.target === videoModal) {
         closeModal?.click();
       }
     });
-    
+
     // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
         closeModal?.click();
       }
     });
